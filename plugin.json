@@ -1,0 +1,8 @@
+{
+  "id": "trmnl-weather-taufkirchen",
+  "name": "TRMNL Wetter Taufkirchen",
+  "version": "1.0.0",
+  "description": "Modernes Wetterdisplay für TRMNL (Querformat, 3-Tage-Vorschau, aktuelles Wetter, Symbole, DE)",
+  "author": "Superstar Mc Hammergeil & ChatGPT Plugin Build",
+  "license": "MIT"
+}
