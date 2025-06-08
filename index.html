@@ -1,0 +1,50 @@
+<View>
+  <Title>🌤️ Wetter Taufkirchen (Vils)</Title>
+
+  <!-- Aktuelles Wetter Block -->
+  <Layout columns="2">
+    <Column>
+      <Image src="{{ current.icon }}" />
+    </Column>
+    <Column>
+      <Text><b>{{ current.temp }} °C</b> (Gefühlt: {{ current.feels_like }} °C)</Text>
+      <Text>💧 {{ current.humidity }} %</Text>
+      <Text>{{ current.description }}</Text>
+      <Text>🌅 {{ current.sunrise }} · 🌇 {{ current.sunset }}</Text>
+      <Text>🌀 {{ current.wind_speed }} km/h</Text>
+    </Column>
+  </Layout>
+
+  <Text>───────────────────────────────</Text>
+
+  <!-- 3-Tages-Vorschau -->
+  <Layout columns="3">
+    <Column>
+      <Text><b>{{ forecast[0].day_name }}</b></Text>
+      <Image src="{{ forecast[0].icon }}" />
+      <Text>{{ forecast[0].description }}</Text>
+      <Text>🌡️ ↓{{ forecast[0].temp_min }}° ↑{{ forecast[0].temp_max }}°</Text>
+      <Text>🌧️ {{ forecast[0].pop }} %</Text>
+      <Text>🌀 {{ forecast[0].wind_speed }} km/h</Text>
+    </Column>
+    <Column>
+      <Text><b>{{ forecast[1].day_name }}</b></Text>
+      <Image src="{{ forecast[1].icon }}" />
+      <Text>{{ forecast[1].description }}</Text>
+      <Text>🌡️ ↓{{ forecast[1].temp_min }}° ↑{{ forecast[1].temp_max }}°</Text>
+      <Text>🌧️ {{ forecast[1].pop }} %</Text>
+      <Text>🌀 {{ forecast[1].wind_speed }} km/h</Text>
+    </Column>
+    <Column>
+      <Text><b>{{ forecast[2].day_name }}</b></Text>
+      <Image src="{{ forecast[2].icon }}" />
+      <Text>{{ forecast[2].description }}</Text>
+      <Text>🌡️ ↓{{ forecast[2].temp_min }}° ↑{{ forecast[2].temp_max }}°</Text>
+      <Text>🌧️ {{ forecast[2].pop }} %</Text>
+      <Text>🌀 {{ forecast[2].wind_speed }} km/h</Text>
+    </Column>
+  </Layout>
+
+  <!-- Letzte Aktualisierung -->
+  <Text>🕒 Letzte Aktualisierung: {{ updated_at }}</Text>
+</View>
