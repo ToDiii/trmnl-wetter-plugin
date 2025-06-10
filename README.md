@@ -12,7 +12,7 @@ Optimiert für **1-Bit E-Ink** → keine Graustufen!
 1. Ordnerstruktur:
 
 ```
-TRMNL_Wetter_Taufkirchen/
+TRMNL_Wetter_/
 ├── plugin.json
 ├── index.html
 ├── README.md
@@ -30,7 +30,7 @@ TRMNL_Wetter_Taufkirchen/
 4. Im TRMNL Dashboard:
 
 - Private Plugins → Plugin hochladen → deine ZIP
-- Neue Display View → Template: **TRMNL Wetter Taufkirchen**
+- Neue Display View → Template: **TRMNL Wetter **
 - Update-Intervall: **alle 3 Stunden empfohlen**
 
 ## API
@@ -39,7 +39,7 @@ TRMNL_Wetter_Taufkirchen/
 - Dein API Key ist im Template integriert:
 
 ```plaintext
-https://api.openweathermap.org/data/2.5/forecast?q=Taufkirchen,DE&units=metric&lang=de&appid=DEIN_API_KEY
+https://api.openweathermap.org/data/2.5/forecast?q=,DE&units=metric&lang=de&appid=DEIN_API_KEY
 ```
 
 ## Icon Mapping
