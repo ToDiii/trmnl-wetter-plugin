@@ -1,4 +1,4 @@
-# TRMNL Wetter Taufkirchen Plugin
+# TRMNL Wetter Plugin
 
 ## Übersicht
 
