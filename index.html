@@ -1,50 +1,77 @@
 <View>
-  <Title>🌤️ Wetter Taufkirchen (Vils)</Title>
+  <Title>
+    <Text>
+      🌤️ Wetter in {{ city.name | default('Unbekannt') }}
+    </Text>
+  </Title>
 
-  <!-- Aktuelles Wetter Block -->
   <Layout columns="2">
     <Column>
-      <Image src="{{ current.icon }}" />
+      <Image src="/assets/icons/{{ list[0].weather[0].icon | default('01d') }}.png" width="80px" height="80px" alt="{{ list[0].weather[0].description | default('Wetter Icon') }}" />
+      <Text style="font-size: 1.5em; font-weight: bold;">
+        {{ list[0].main.temp | round(0) | default('N/A') }} °C
+      </Text>
+      <Text style="color: #888;">
+        Gefühlt: {{ list[0].main.feels_like | round(0) | default('N/A') }} °C
+      </Text>
     </Column>
     <Column>
-      <Text><b>{{ current.temp }} °C</b> (Gefühlt: {{ current.feels_like }} °C)</Text>
-      <Text>💧 {{ current.humidity }} %</Text>
-      <Text>{{ current.description }}</Text>
-      <Text>🌅 {{ current.sunrise }} · 🌇 {{ current.sunset }}</Text>
-      <Text>🌀 {{ current.wind_speed }} km/h</Text>
+      <Text>
+        💧 Feuchtigkeit: {{ list[0].main.humidity | default('N/A') }} %
+      </Text>
+      <Text>
+        {{ list[0].weather[0].description | capitalize | default('Unbekannt') }}
+      </Text>
+      <Text>
+        🌀 Wind: {{ list[0].wind.speed | round(1) | default('N/A') }} km/h
+      </Text>
+      <Text>
+        ⬆️ Druck: {{ list[0].main.pressure | default('N/A') }} hPa
+      </Text>
     </Column>
   </Layout>
 
-  <Text>───────────────────────────────</Text>
+  <Layout columns="2">
+    <Column>
+      <Text>
+        🌅 Sonnenaufgang: {{ city.sys.sunrise | date:"HH:mm" | default('N/A') }}
+      </Text>
+    </Column>
+    <Column>
+      <Text>
+        🌇 Sonnenuntergang: {{ city.sys.sunset | date:"HH:mm" | default('N/A') }}
+      </Text>
+    </Column>
+  </Layout>
 
-  <!-- 3-Tages-Vorschau -->
+  <Text style="color: #666; margin-top: 15px; margin-bottom: 15px; text-align: center;">
+    --- 3-Tages Vorschau ---
+  </Text>
+
   <Layout columns="3">
-    <Column>
-      <Text><b>{{ forecast[0].day_name }}</b></Text>
-      <Image src="{{ forecast[0].icon }}" />
-      <Text>{{ forecast[0].description }}</Text>
-      <Text>🌡️ ↓{{ forecast[0].temp_min }}° ↑{{ forecast[0].temp_max }}°</Text>
-      <Text>🌧️ {{ forecast[0].pop }} %</Text>
-      <Text>🌀 {{ forecast[0].wind_speed }} km/h</Text>
+    {% for i in [0, 8, 16] %}
+    <Column style="padding: 5px; border: 1px solid #333; border-radius: 5px; margin-right: 5px;">
+      <Text style="font-weight: bold; margin-bottom: 5px;">
+        {{ list[i].dt_txt | date:"EEEE" | default('N/A') }}
+      </Text>
+      <Image src="/assets/icons/{{ list[i].weather[0].icon | default('01d') }}.png" width="50px" height="50px" alt="{{ list[i].weather[0].description | default('Wetter Icon') }}" />
+      <Text style="font-size: 0.9em; margin-top: 5px;">
+        {{ list[i].weather[0].description | capitalize | default('N/A') }}
+      </Text>
+      <Text style="color: #aaa;">
+        🌡️ ↓{{ list[i].main.temp_min | round(0) | default('N/A') }}° ↑{{ list[i].main.temp_max | round(0) | default('N/A') }}°
+      </Text>
+      <Text style="color: #aaa;">
+        🌧️ {{ (list[i].pop * 100) | round(0) | default('N/A') }} %
+      </Text>
+      <Text style="color: #aaa;">
+        🌀 {{ list[i].wind.speed | round(1) | default('N/A') }} km/h
+      </Text>
     </Column>
-    <Column>
-      <Text><b>{{ forecast[1].day_name }}</b></Text>
-      <Image src="{{ forecast[1].icon }}" />
-      <Text>{{ forecast[1].description }}</Text>
-      <Text>🌡️ ↓{{ forecast[1].temp_min }}° ↑{{ forecast[1].temp_max }}°</Text>
-      <Text>🌧️ {{ forecast[1].pop }} %</Text>
-      <Text>🌀 {{ forecast[1].wind_speed }} km/h</Text>
-    </Column>
-    <Column>
-      <Text><b>{{ forecast[2].day_name }}</b></Text>
-      <Image src="{{ forecast[2].icon }}" />
-      <Text>{{ forecast[2].description }}</Text>
-      <Text>🌡️ ↓{{ forecast[2].temp_min }}° ↑{{ forecast[2].temp_max }}°</Text>
-      <Text>🌧️ {{ forecast[2].pop }} %</Text>
-      <Text>🌀 {{ forecast[2].wind_speed }} km/h</Text>
-    </Column>
+    {% endfor %}
   </Layout>
 
-  <!-- Letzte Aktualisierung -->
-  <Text>🕒 Letzte Aktualisierung: {{ updated_at }}</Text>
+  <Text style="font-size: 0.8em; color: #999; margin-top: 20px; text-align: right;">
+    🕒 Letzte Aktualisierung: {{ trmnl.system.timestamp_utc | date:"dd.MM.yyyy HH:mm" | default('N/A') }}
+  </Text>
 </View>
