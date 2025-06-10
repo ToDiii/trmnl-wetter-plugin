@@ -1,8 +1,48 @@
 {
-  "id": "trmnl-weather",
-  "name": "TRMNL Wetter",
+  "id": "trmnl-weather-taufkirchen",
+  "name": "TRMNL Wetter Taufkirchen",
   "version": "1.0.0",
-  "description": "Modernes Wetterdisplay für TRMNL (Querformat, 3-Tage-Vorschau, aktuelles Wetter, Symbole, DE)",
-  "author": "ToDiii",
-  "license": "MIT"
+  "description": "Modernes Wetter-Display für TRMNL (Querformat, 3-Tage-Vorschau, aktuelles Wetter, Symbole, DE)",
+  "author": "Superstar Mc Hammergeil",
+  "license": "MIT",
+  "form_fields": [
+    {
+      "keyname": "location",
+      "field_type": "text",
+      "name": "Ort",
+      "default": "Taufkirchen"
+    },
+    {
+      "keyname": "country",
+      "field_type": "text",
+      "name": "Land",
+      "default": "DE"
+    },
+    {
+      "keyname": "units",
+      "field_type": "select",
+      "name": "Einheit",
+      "options": [
+        "metric",
+        "imperial"
+      ],
+      "default": "metric"
+    },
+    {
+      "keyname": "lang",
+      "field_type": "select",
+      "name": "Sprache",
+      "options": [
+        "de",
+        "en"
+      ],
+      "default": "de"
+    },
+    {
+      "keyname": "api_key",
+      "field_type": "text",
+      "name": "OpenWeatherMap API Key",
+      "default": "07006628f0484673e804d1e8bfcc6f68"
+    }
+  ]
 }
