@@ -39,7 +39,7 @@ TRMNL_Wetter_/
 - Dein API Key ist im Template integriert:
 
 ```plaintext
-https://api.openweathermap.org/data/2.5/forecast?q=,DE&units=metric&lang=de&appid=DEIN_API_KEY
+https://api.openweathermap.org/data/2.5/forecast?q=YOURTOWN,DE&units=metric&lang=de&appid=DEIN_API_KEY
 ```
 
 ## Icon Mapping
