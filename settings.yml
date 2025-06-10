@@ -1,0 +1,40 @@
+strategy: polling
+
+polling:
+  url: "https://api.openweathermap.org/data/2.5/forecast?q={{ location }},{{ country }}&units={{ units }}&lang={{ lang }}&appid={{ api_key }}"
+  verb: GET
+  headers:
+    content-type: application/json
+  body: ""
+
+form_fields:
+  - keyname: location
+    field_type: text
+    name: Ort
+    default: Taufkirchen
+  - keyname: country
+    field_type: text
+    name: Land
+    default: DE
+  - keyname: units
+    field_type: select
+    name: Einheit
+    options:
+      - metric
+      - imperial
+    default: metric
+  - keyname: lang
+    field_type: select
+    name: Sprache
+    options:
+      - de
+      - en
+    default: de
+  - keyname: api_key
+    field_type: text
+    name: OpenWeatherMap API Key
+    default: --YOUR-KEY--
+
+remove_bleed_margin: false
+enable_dark_mode: false
+name: TRMNL Wetter
